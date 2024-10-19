@@ -3,6 +3,7 @@ package calculator.model;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
+import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -64,5 +65,18 @@ public class StringCalculatorTest {
         assertThat(numbers1).containsExactly(1L, 2L, 3L);
         assertThat(numbers2).containsExactly(13L, 27L, 3L);
         assertThat(numbers3).containsExactly(139L, 20L, 3576L);
+    }
+
+    @Test
+    @DisplayName("덧셈 기능 테스트")
+    public void addTest(){
+        // given
+        List<Long> numbers = Arrays.asList(100L, 376L, 44L);
+
+        // when
+        long result = stringCalculator.add(numbers);
+
+        // then
+        assertThat(result).isEqualTo(520L);
     }
 }

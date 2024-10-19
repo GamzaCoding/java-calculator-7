@@ -30,4 +30,9 @@ public class StringCalculator {
                 .map(Long::parseLong)
                 .toList();
     }
+    public long add(List<Long> numbers){
+        return numbers.stream()
+                .mapToLong(i -> i)
+                .sum();
+    }
 }
