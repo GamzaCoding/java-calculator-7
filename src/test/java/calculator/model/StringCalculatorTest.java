@@ -58,31 +58,41 @@ public class StringCalculatorTest {
     @DisplayName("숫자 필터링 기능 테스트")
     public void filterNumberTest() {
         // given
-        String input1 = "1,2:3";
-        String input2 = "13:27:3";
-        String input3 = "139,20:3576";
+        String input1 = "";
+        String input2 = "1,2";
+        String input3 = "1,2:3";
+        String input4 = "13:27:3";
+        String input5 = "139,20:3576";
 
         // when
         List<Long> numbers1 = stringCalculator.filter(input1);
         List<Long> numbers2 = stringCalculator.filter(input2);
         List<Long> numbers3 = stringCalculator.filter(input3);
+        List<Long> numbers4 = stringCalculator.filter(input4);
+        List<Long> numbers5 = stringCalculator.filter(input5);
 
         // then
-        assertThat(numbers1).containsExactly(1L, 2L, 3L);
-        assertThat(numbers2).containsExactly(13L, 27L, 3L);
-        assertThat(numbers3).containsExactly(139L, 20L, 3576L);
+        assertThat(numbers1).containsExactly(0L);
+        assertThat(numbers2).containsExactly(1L, 2L);
+        assertThat(numbers3).containsExactly(1L, 2L, 3L);
+        assertThat(numbers4).containsExactly(13L, 27L, 3L);
+        assertThat(numbers5).containsExactly(139L, 20L, 3576L);
     }
 
     @Test
     @DisplayName("덧셈 기능 테스트")
     public void addTest(){
         // given
-        List<Long> numbers = Arrays.asList(100L, 376L, 44L);
+        List<Long> numbers1 = Arrays.asList(100L, 376L, 44L);
+        List<Long> numbers2 = Arrays.asList(0L);
+
 
         // when
-        long result = stringCalculator.add(numbers);
+        long result1 = stringCalculator.add(numbers1);
+        long result2 = stringCalculator.add(numbers2);
 
         // then
-        assertThat(result).isEqualTo(520L);
+        assertThat(result1).isEqualTo(520L);
+        assertThat(result2).isEqualTo(0L);
     }
 }

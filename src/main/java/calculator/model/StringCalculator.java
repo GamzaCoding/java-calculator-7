@@ -6,6 +6,8 @@ import java.util.List;
 public class StringCalculator {
     private static final String ALLOWED_FROM = "^[0-9]*([:,][0-9]*)*$";
     private static final String ZERO_FROM = "";
+    private static final String SEPARATOR = "\\D";
+    private static final long ZERO = 0L;
 
     private static final String NUMBER_FROM = "^[0-9]+$";
 
@@ -31,7 +33,11 @@ public class StringCalculator {
     }
 
     public List<Long> filter(String inputString) {
-        return Arrays.stream(inputString.split("\\D"))
+        if(inputString.matches(ZERO_FROM)){
+            return Arrays.asList(ZERO);
+        }
+
+        return Arrays.stream(inputString.split(SEPARATOR))
                 .filter(token -> token.matches(NUMBER_FROM))
                 .map(Long::parseLong)
                 .toList();
