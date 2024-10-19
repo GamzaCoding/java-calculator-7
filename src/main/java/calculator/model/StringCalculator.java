@@ -31,8 +31,8 @@ public class StringCalculator {
                 .toList();
     }
     public long add(List<Long> numbers){
-        return numbers.stream()
-                .mapToLong(i -> i)
-                .sum();
+            return numbers.stream()
+                    .mapToLong(i -> i)
+                    .sum();
     }
 }
